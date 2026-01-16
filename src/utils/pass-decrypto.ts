@@ -1,6 +1,6 @@
-import { compare } from 'bcrypt'
+import { compareSync } from 'bcrypt'
 
-async function passDecrypto(encryptedPassword: string, password: string) {
-  return await compare(password, encryptedPassword)
+function passDecrypto(encryptedPassword: string, password: string) {
+  return compareSync(password, encryptedPassword)
 }
 export { passDecrypto }
