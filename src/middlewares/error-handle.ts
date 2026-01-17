@@ -10,7 +10,6 @@ function errorHandle(
   next: NextFunction,
 ) {
   if (error instanceof AppError) {
-    console.log('App Error detected')
     return res.status(error.statusCode).json({
       errors: error.message,
     })
