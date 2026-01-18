@@ -39,5 +39,19 @@ export class UsersController {
 
     res.status(201).json(userWithoutPassword)
   }
+
+  async index(req: Request, res: Response) {
+    const users = await prisma.user.findMany({
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true,
+        createdAt: true,
+      },
+    })
+
+    res.status(200).json(users)
+  }
   // Controller methods will be implemented here
 }
