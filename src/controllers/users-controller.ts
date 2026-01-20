@@ -22,7 +22,7 @@ export class UsersController {
     })
 
     if (userWithSameEmail) {
-      throw new AppError('Email already registered', 409)
+      throw new AppError('Email already registered')
     }
 
     const passwordEncrypted = await passCrypto(password)
