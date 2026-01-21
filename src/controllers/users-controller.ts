@@ -11,6 +11,7 @@ export class UsersController {
       name: z.string().min(2),
       email: z.email(),
       password: z.string().min(6),
+      role: z.enum(['admin', 'customer', 'guest']).optional(),
     })
 
     const { name, email, password } = bodySchema.parse(req.body)
@@ -32,6 +33,7 @@ export class UsersController {
         name,
         email,
         password: passwordEncrypted,
+        role: 'customer',
       },
     })
 
