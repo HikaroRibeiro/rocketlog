@@ -14,7 +14,7 @@ export class UsersController {
       role: z.enum(['admin', 'customer', 'guest']).optional(),
     })
 
-    const { name, email, password } = bodySchema.parse(req.body)
+    const { name, email, password, role } = bodySchema.parse(req.body)
 
     const userWithSameEmail = await prisma.user.findFirst({
       where: {
@@ -33,7 +33,7 @@ export class UsersController {
         name,
         email,
         password: passwordEncrypted,
-        role: 'customer',
+        role,
       },
     })
 
